@@ -1,0 +1,33 @@
+<!-- views/login.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TinyApp</title>
+</head>
+<body>
+
+  <h1>Login</h1>
+
+  <% if (user) { %>
+    <form id="registration" action="/login" method="POST">
+      <input type="submit" value="Logout">
+      <p>Login email: <%= user.email %></p>
+    </form>
+
+  <% } else { %>
+    <form action="/login" method="POST" >
+      <p>
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" placeholder="user@example.com" style="width: 300px" >
+      </p>
+      <p>
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" placeholder="password" style="width: 150px" >
+        <input type="submit" value="Login">
+      </p>
+    </form>
+  <% } %>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- views/urls_index.ejs -->
+<!-- urlDatabase tracks of all the URLs and their shortened forms, as values and their keys. urlDatabase to be passed to "/urls" page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TinyApp</title>
+  <%- include('partials/_header') %>
+</head>
+<body>
+
+  <h1>Database of URLS</h1>
+  <table style="border: 1px solid black; width: 70%;">
+    <tr>
+      <th style="text-align:left;" >Short URL</th>
+      <th style="text-align:left;" >Full URL</th>
+      <th style="text-align:left;" >Edit</th>
+      <th style="text-align:left;" >Delete</th>
+    </tr>
+    <% for (let shortURL in urls) { %>
+      <tr>
+        <td>
+          <!-- short URL -->
+          <%= [shortURL] %>
+        </td>
+        <td>
+          <!-- full URL -->
+          <a href="<%= urls[shortURL].longURL %>"><%= urls[shortURL].longURL %></a>
+        </td>
+        <td>
+          <!-- link to edit full URL -->
+          <a href="/urls/<%= shortURL %>">Edit</a>
+        </td>
+        <td>
+          <!-- delete short URLs -->
+          <form action="/urls/<%= shortURL %>/delete" method="POST" >
+            <input type="submit" value="Delete 🗑">
+          </form>
+        </td>
+      </td>
+    <% } %>
+  </table>
+
+  <!-- link for shortening a new URL -->
+  <p>Click <a href="/urls/new">HERE</a> to create a short URL!
+
+</body>
+</html>
+

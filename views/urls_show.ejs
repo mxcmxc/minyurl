@@ -1,0 +1,29 @@
+<!-- views/urls_show.ejs -->
+<!-- displaying a single full URL and its shortened form. The end point for such a page will be in the format /urls/b2xVn2, which in this example means it's the page for the URL with the shortened form (or ID) b2xVn2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TinyApp</title>
+  <%- include('partials/_header') %>
+</head>
+<body>
+
+  <h2>Shortened URL: <b><%= shortURL %></b> </h2>
+
+  <form action="/urls/<%= shortURL %>" method="POST">
+    <!--   edit full URL  -->
+    <label for="longURL">Update URL:</label>
+    <input style="width:30%" id="longURL type="text" name="longURL" value="<%=longURL%>" placeholder="http://" >
+ <!--    update the edited full URL button -->
+    <input type="submit" value="Update">
+  </form>
+
+  <form method="POST" action="/urls/<%=shortURL%>/delete" style="margin:10px;">
+    <input type="submit" value="Delete">
+  </form>
+
+</body>
+</html>
+
+

@@ -1,0 +1,30 @@
+{
+  "name": "miny-url",
+  "version": "1.0.0",
+  "description": "Miny URL is a full stack web application built with Node and Express that allows users to shorten long URLs.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxcmxc/minyurl.git"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mxcmxc/minyurl/issues"
+  },
+  "homepage": "https://github.com/mxcmxc/minyurl#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}

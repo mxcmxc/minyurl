@@ -1,0 +1,25 @@
+<!-- partials/_header.ejs | header for all html docs -->
+<head>
+  <title>Miny URL</title>
+</head>
+<body>
+
+  <% if (user) { %>
+    <form action="/logout" method="POST">
+      <input type="submit" value="Logout">
+      <p>Login email: <%= user.email %></p>
+    </form>
+
+  <% } else { %>
+    <form action="/login" method="GET" >
+      <input type="submit" value="Login">
+    </form>
+
+    <form action="/register" method="GET">
+      <p>Don't have an account?
+        <input type="submit" value="Register">
+      </p>
+    </form>
+  <% } %>
+
+</body>

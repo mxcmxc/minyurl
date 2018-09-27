@@ -1,0 +1,22 @@
+<!-- views/urls_new.ejs -->
+<!-- form page that we will use to submit URLs to be shortened -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/_header') %>
+</head>
+<body style="font-size:20px; padding:50px;">
+
+  <h1>Submit URLs to be Shortened Form</h1>
+
+  <form action="/urls" method="POST" style="margin:150px;">
+    <label for="longURL">Enter a URL:</label>
+    <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px">
+    <input type="submit" value="Submit">
+  </form>
+
+  </body>
+</html>
+
+
