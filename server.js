@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt'); // encrypt password
 //EJS (templating engine)
 
 
-app.set("view engine", "ejs"); //use ejs as template engine
+app.set("view engine", "ejs"); // set view engine for node.js
 
 //app.use() to specify middleware as the callback function
 app.use(bodyParser.urlencoded({extended: true})); // access POST request parameters which will in urlDatabase
