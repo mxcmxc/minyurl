@@ -9,19 +9,41 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TinyApp</title>
+  <title>Miny URL</title>
   <%- include('partials/_header') %>
 </head>
 <body>
 
-  <h1>Database of URLS</h1>
-  <table style="border: 1px solid black; width: 70%;">
-    <tr>
-      <th style="text-align:left;" >Short URL</th>
-      <th style="text-align:left;" >Full URL</th>
-      <th style="text-align:left;" >Edit</th>
-      <th style="text-align:left;" >Delete</th>
-    </tr>
+  <h2>Database of URLs</h2>
+
+  <!-- Modal Trigger Create a Short URL -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal">Create a Short URL</a>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <form action="/urls" method="POST">
+        <label for="longURL">Enter the long URL:</label>
+        <input id="longURL" type="text" name="longURL" placeholder="http://www.">
+        <div class="modal-footer">
+          <button type="submit" value="Submit" class="btn modal-close waves-effect waves-green">Submit</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+  <table class="striped responsive-table">
+    <thead>
+      <tr>
+        <th>Short URL</th>
+        <th>Full URL</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
     <% for (let shortURL in urls) { %>
       <tr>
         <td>
@@ -38,16 +60,14 @@
         </td>
         <td>
           <!-- delete short URLs -->
-          <form action="/urls/<%= shortURL %>/delete" method="POST" >
-            <input type="submit" value="Delete 🗑">
+          <form action="/urls/<%= shortURL %>/delete" method="POST"> 
+            <button class="btn waves-effect btn-flat grey lighten-2" type="submit" value="Delete">Delete</button>
           </form>
         </td>
       </td>
     <% } %>
+    </tbody>
   </table>
-
-  <!-- link for shortening a new URL -->
-  <p>Click <a href="/urls/new">HERE</a> to create a short URL!
 
   <!--Import jQuery before materialize.js-->
   <script
@@ -57,5 +77,10 @@
   </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <script>
+      $(document).ready(function(){
+        $('.modal').modal(); // initiatiate modal
+      });
+    </script>
 </body>
 </html>

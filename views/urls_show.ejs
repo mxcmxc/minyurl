@@ -9,24 +9,30 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TinyApp</title>
+  <title>Miny URL</title>
   <%- include('partials/_header') %>
 </head>
 <body>
 
-  <h2>Shortened URL: <b><%= shortURL %></b> </h2>
-
-  <form action="/urls/<%= shortURL %>" method="POST">
-    <!--   edit full URL  -->
-    <label for="longURL">Update URL:</label>
-    <input style="width:30%" id="longURL type="text" name="longURL" value="<%=longURL%>" placeholder="http://" >
- <!--    update the edited full URL button -->
-    <input type="submit" value="Update">
-  </form>
-
-  <form method="POST" action="/urls/<%=shortURL%>/delete" style="margin:10px;">
-    <input type="submit" value="Delete">
-  </form>
+  <div class="col s12 m7">
+    <h2 class="header">Shortened URL:<%= shortURL %></h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://picsum.photos/300/300?image=0">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <form action="/urls/<%= shortURL %>" method="POST">
+            <!--   edit full URL  -->
+            <label for="longURL">Update the long URL:</label>
+            <input id="longURL type="text" name="longURL" value="<%=longURL%>" placeholder="http://www." >
+          <!--    update the edited full URL button -->
+            <button class="btn waves-effect waves-light" type="submit" value="Update">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--Import jQuery before materialize.js-->
   <script

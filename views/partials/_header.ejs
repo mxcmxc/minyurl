@@ -11,21 +11,63 @@
 <body>
 
   <% if (user) { %>
-    <form action="/logout" method="POST">
-      <input type="submit" value="Logout">
-      <p>Login email: <%= user.email %></p>
-    </form>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li>   
+            <form action="/logout" method="POST">        
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Logout">Logout</button>
+            </form>
+          </li> 
+        </ul>
+        <ul class="sidenav" id="mobile-demo">  
+          <li>
+            <form action="/logout" method="POST">           
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Logout">Logout</button>
+            </form>
+          </li>  
+        </ul> 
+      </div>
+    </nav>
 
   <% } else { %>
-    <form action="/login" method="GET" >
-      <input type="submit" value="Login">
-    </form>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li>   
+            <form action="/login" method="GET">        
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Login">Login</button>
+            </form>
+          </li> 
+          <li>   
+            <form action="/register" method="GET">        
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Register">Register</button>
+            </form>
+          </li> 
+        </ul>
+        <ul class="sidenav" id="mobile-demo">  
+          <li>   
+            <form action="/login" method="GET">        
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Login">Login</button>
+            </form>
+          </li> 
+          <li>   
+            <form action="/register" method="GET">        
+              <button class="btn waves-effect waves-light btn-flat red lighten-2 white-text" type="submit" value="Register">Register</button>
+            </form>
+          </li>  
+        </ul> 
+      </div>
+    </nav>
 
-    <form action="/register" method="GET">
-      <p>Don't have an account?
-        <input type="submit" value="Register">
-      </p>
-    </form>
   <% } %>
 
   <!--Import jQuery before materialize.js-->
@@ -36,4 +78,10 @@
   </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <!-- jQuery -->
+  <script>
+    $(document).ready(function(){
+      $(".sidenav").sidenav(); // initiate nav mobile collapse
+    });  
+    </script>
 </body>

@@ -8,24 +8,39 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TinyApp</title>
+  <title>Miny URL</title>
   <%- include('partials/_header') %>
 </head>
 <body>
 
-  <h1>Registration</h1>
+  <h2>Registration</h2>
 
-  <form id="registration" action="/register" method="POST">
-    <p>
-    <label for="email">Email:</label>
-    <input id="email" type="email" name="email" placeholder="user@example.com" style="width: 150px" >
-    </p>
-    <p>
-    <label for="password">Password:</label>
-    <input id="password" type="password" name="password" placeholder="password" style="width: 150px" >
-    <input type="submit" value="Register">
-    </p>
-  </form>
+  <div class="col s2 z-depth-5 card-panel" style="width:40%">
+    <form id="registration" action="/register" method="POST">
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">mail_outline</i>
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+          <input class="validate" id="email" type="email" placeholder="user@example.com">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">lock_outline</i>
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" placeholder="password">
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s10">
+          <input class="btn waves-effect waves-light col s6" type="submit" value="Register">
+        </div>
+      </div>
+
+    </form>
+  </div>
 
   <!--Import jQuery before materialize.js-->
   <script
