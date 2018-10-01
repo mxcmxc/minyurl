@@ -1,16 +1,13 @@
-const express = require("express"); // server
+const express = require("express"); 
 var app = express();
-var PORT = process.env.PORT || 8080; // default port 8080
+var PORT = process.env.PORT || 8080; 
 const bodyParser = require("body-parser"); // parse incoming request bodies in a middleware before handlers
 var cookieSession = require('cookie-session'); // encrypt cookies
 const bcrypt = require('bcrypt'); // encrypt password
-//EJS (templating engine)
-
 
 app.set("view engine", "ejs"); // set view engine for node.js
 
-//app.use() to specify middleware as the callback function
-app.use(bodyParser.urlencoded({extended: true})); // access POST request parameters which will in urlDatabase
+app.use(bodyParser.urlencoded({extended: true})); 
 
 app.use(cookieSession({
   name: 'session',
@@ -20,11 +17,11 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-//====================DATABASES====================//
+//====================DATABASE===================//
 
 var urlDatabase = {
   "b2xVn2": {
-    longURL: "http://www.lighthouselabs.ca",
+    longURL: "http://www.reddit.com",
     userID: "userRandomID"
   },
   "9sm5xK": {
@@ -54,6 +51,7 @@ const users = {
     password: bcrypt.hashSync("1234", 10)
   }
 };
+
 //====================FUNCTIONS====================//
 // Function to generate a random 6 digit alphanumeric string for id and short URL
 function generateRandomString() {
@@ -65,7 +63,7 @@ function generateRandomString() {
   return output;
 }
 
-// Function to verify user credentials by comparing email and password on database and what was entered
+// Function to verify user credentials; compare email and pw on database and what was entered
 function verifyUserLogin(email, password) {
   for (let user in users) {
   if (users[user].email === email && bcrypt.compareSync(password, users[user].password)) {
@@ -92,7 +90,7 @@ app.get("/urls.json", function(request, response) {
   response.json(urlDatabase);
 });
 
-// When going to /, if user is logged in, redirect to /urls, otherwise prompts to login
+// When path is /, if user is logged in, redirect to /urls, otherwise redirect to login page
 app.get("/", function (request, response) {
   let user = users[request.session.user_id];
   if (!user) {
@@ -101,9 +99,9 @@ app.get("/", function (request, response) {
     response.redirect("/urls");
 });
 
-// Renders urls_index page where user can see  all their short URLs
+// Renders urls_index page where user can see  list of short URLs
 app.get('/urls', function(request, response) {
-  let user = users[request.session.user_id]; // checks if there is a cookie and if so, sends back that user's info
+  let user = users[request.session.user_id]; // check if there is a cookie and if so, send back that user's info
   if (!user) {
     return response.status(403).send("Error: User must be logged in to view URLs");
   }
@@ -114,7 +112,7 @@ app.get('/urls', function(request, response) {
   response.render("urls_index", templateVars);
 });
 
-// Page to make a new short URL, redirects to login if user is not logged in */
+// Page to create a new short URL, redirects to login if user is not logged in 
 app.get("/urls/new", function(request, response) {
   let user = users[request.session.user_id];
   if (!user) {
@@ -126,7 +124,7 @@ app.get("/urls/new", function(request, response) {
   response.render("urls_new", templateVars);
 });
 
-// User's personal short URL page where they can delete and edit the short URL
+// User's personal short URL page to edit and delete the short URL
 app.get('/urls/:id', function(request, response) {
   let user = users[request.session.user_id];
   if (!user) {
@@ -135,7 +133,7 @@ app.get('/urls/:id', function(request, response) {
   if (urlDatabase[request.params.id] === undefined) {
     response.status(404).send("Error: URL not found");
   }
-  //Check if URL belongs to user
+  // Check if URL belongs to user
   if (user.id !== urlDatabase[request.params.id].userID) {
     response.status(403).send("Error: User not authorized to edit URL");
   } else {
@@ -148,7 +146,7 @@ app.get('/urls/:id', function(request, response) {
     }
  });
 
-// Short URL that can be accessed by anyone and takes you to the long URL page, no login required. Redirect to error messages if the short URL does not exist
+// Short URL that can be accessed by anyone and takes you to the long URL page, no login required. Redirect to error message if the short URL does not exist
 app.get("/u/:shortURL", function(request, response) {
   if (urlDatabase[request.params.shortURL === undefined]) {
     response.status(400).send("Error: URL does not exist");
@@ -259,7 +257,7 @@ app.post("/register", function(request, response) {
   // Check email is unique
   for (user in users) {
     if (users[user].email === email) {
-      return response.status(400).send("Error: email already exists.");
+      return response.status(400).send("Error: email already exists");
     }
   }
   // Generate a new userID
@@ -279,7 +277,7 @@ app.post("/register", function(request, response) {
   response.redirect("/urls");
 });
 
-//====================SERVER LISTEN====================//
+
 app.listen(PORT, function() {
   console.log(`Listening on port ${PORT}...`);
 })
