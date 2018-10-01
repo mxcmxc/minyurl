@@ -12,8 +12,7 @@
 </head>
 <body>
 
-  <h2>Login</h2>
-
+  <!-- <h2 style="text-align:center">Login</h2> -->
   <% if (user) { %>
     <form id="registration" action="/login" method="POST">
       <input type="submit" value="Logout">
@@ -21,10 +20,14 @@
     </form>
 
   <% } else { %>
-      <div class="col s12 z-depth-5 card-panel" style="width:40%">
+    <div id="login-page" class="row">
+      <div class="col s4"></div>
+      <div class="col s4 z-depth-5 card-panel">
         <form class="login-form" action="/login" method="POST">
+          <h2 style="text-align:center">Login</h2>
+          
           <div class="row">
-            <div class="input-field col s10">
+            <div class="input-field col s12">
               <i class="material-icons prefix">mail_outline</i>
               <label for="email" data-error="wrong" data-success="right">Email</label>
               <input class="validate" id="email" type="email" placeholder="user@example.com">
@@ -32,7 +35,7 @@
           </div>
 
           <div class="row">
-            <div class="input-field col s10">
+            <div class="input-field col s12">
               <i class="material-icons prefix">lock_outline</i>
               <label for="password">Password</label>
               <input id="password" type="password" name="password" placeholder="password">
@@ -40,12 +43,20 @@
           </div>
           
           <div class="row">
-            <div class="input-field col s10">
-              <input class="btn waves-effect waves-light col s6" type="submit" value="Login">
+            <div class="input-field col s12">
+              <button class="btn waves-effect waves-light col s12" type="submit" value="Login">Login</button>
             </div>
           </div>
+          
+          <div class="row">
+            <div class="input-field col s12">
+              <p class="right-align"><a href="/register">Register Now</a></p>
+            </div>   
+          </div>
+          
         </form>
       </div>
+    </div>
   <% } %>
 
   <!--Import jQuery before materialize.js-->

@@ -13,33 +13,36 @@
 </head>
 <body>
 
-  <h2>Registration</h2>
+  <div id="login-page" class="row">
+    <div class="col s4"></div>
+    <div class="col s4 z-depth-5 card-panel">
+      <form id="registration" action="/register" method="POST">
+        <h2 style="text-align:center">Registration</h2>
 
-  <div class="col s2 z-depth-5 card-panel" style="width:40%">
-    <form id="registration" action="/register" method="POST">
-      <div class="row">
-        <div class="input-field col s10">
-          <i class="material-icons prefix">mail_outline</i>
-          <label for="email" data-error="wrong" data-success="right">Email</label>
-          <input class="validate" id="email" type="email" placeholder="user@example.com">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mail_outline</i>
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+            <input class="validate" id="email" type="email" placeholder="user@example.com">
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="input-field col s10">
-          <i class="material-icons prefix">lock_outline</i>
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password" placeholder="password">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="password">
+          </div>
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="input-field col s10">
-          <input class="btn waves-effect waves-light col s6" type="submit" value="Register">
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn waves-effect waves-light col s12" type="submit" value="Register">Register
+          </div>
         </div>
-      </div>
 
-    </form>
+      </form>
+    </div>
   </div>
 
   <!--Import jQuery before materialize.js-->
