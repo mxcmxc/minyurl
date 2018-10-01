@@ -6,14 +6,15 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   <title>Miny URL</title>
 </head>
 <body>
 
   <% if (user) { %>
-    <nav>
+    <nav style="margin-bottom:2em; padding-left: 16px;">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="/url" class="brand-logo" style="font-family:'Permanent Marker', cursive;"       >Logo</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
@@ -35,7 +36,7 @@
     </nav>
 
   <% } else { %>
-    <nav>
+    <nav style="margin-bottom:2em; padding-left: 16px; font-family:'Permanent Marker', cursive;">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger">

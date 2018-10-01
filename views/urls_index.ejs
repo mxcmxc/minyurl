@@ -14,60 +14,63 @@
 </head>
 <body>
 
-  <h2>Database of URLs</h2>
-
-  <!-- Modal Trigger Create a Short URL -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal">Create a Short URL</a>
-
-  <!-- Modal Structure -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <form action="/urls" method="POST">
-        <label for="longURL">Enter the long URL:</label>
-        <input id="longURL" type="text" name="longURL" placeholder="http://www.">
-        <div class="modal-footer">
-          <button type="submit" value="Submit" class="btn modal-close waves-effect waves-green">Submit</button>
-        </div>
-        
-      </form>
+  <div class="container">
+    <h3>Database of URLs</h3>
+  
+    <!-- Modal Trigger Create a Short URL -->
+    <div class="row right-align">
+      <button data-target="modal" class="waves-effect waves-light btn modal-trigger">Create a Short URL</button>
     </div>
+  
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <form action="/urls" method="POST">
+          <label for="longURL">Enter the long URL:</label>
+          <input id="longURL" type="text" name="longURL" placeholder="http://www.">
+          <div class="modal-footer">
+            <button type="submit" value="Submit" class="btn modal-close waves-effect waves-green">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th>Short URL</th>
+          <th>Full URL</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+      <% for (let shortURL in urls) { %>
+        <tr>
+          <td>
+            <!-- short URL -->
+            <%= [shortURL] %>
+          </td>
+          <td>
+            <!-- full URL -->
+            <a href="<%= urls[shortURL].longURL %>"><%= urls[shortURL].longURL %></a>
+          </td>
+          <td>
+            <!-- link to edit full URL -->
+            <a href="/urls/<%= shortURL %>">Edit</a>
+          </td>
+          <td>
+            <!-- delete short URLs -->
+            <form action="/urls/<%= shortURL %>/delete" method="POST"> 
+              <button class="btn waves-effect btn-flat grey lighten-2" type="submit" value="Delete">Delete</button>
+            </form>
+          </td>
+        </td>
+      <% } %>
+      </tbody>
+    </table>
   </div>
-
-  <table class="striped responsive-table">
-    <thead>
-      <tr>
-        <th>Short URL</th>
-        <th>Full URL</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-
-    <tbody>
-    <% for (let shortURL in urls) { %>
-      <tr>
-        <td>
-          <!-- short URL -->
-          <%= [shortURL] %>
-        </td>
-        <td>
-          <!-- full URL -->
-          <a href="<%= urls[shortURL].longURL %>"><%= urls[shortURL].longURL %></a>
-        </td>
-        <td>
-          <!-- link to edit full URL -->
-          <a href="/urls/<%= shortURL %>">Edit</a>
-        </td>
-        <td>
-          <!-- delete short URLs -->
-          <form action="/urls/<%= shortURL %>/delete" method="POST"> 
-            <button class="btn waves-effect btn-flat grey lighten-2" type="submit" value="Delete">Delete</button>
-          </form>
-        </td>
-      </td>
-    <% } %>
-    </tbody>
-  </table>
 
   <!--Import jQuery before materialize.js-->
   <script

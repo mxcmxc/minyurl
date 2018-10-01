@@ -14,21 +14,23 @@
 </head>
 <body>
 
-  <div class="col s12 m7">
-    <h2 class="header">Shortened URL:<%= shortURL %></h2>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://picsum.photos/300/300?image=0">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <form action="/urls/<%= shortURL %>" method="POST">
-            <!--   edit full URL  -->
-            <label for="longURL">Update the long URL:</label>
-            <input id="longURL type="text" name="longURL" value="<%=longURL%>" placeholder="http://www." >
-          <!--    update the edited full URL button -->
-            <button class="btn waves-effect waves-light" type="submit" value="Update">Update</button>
-          </form>
+  <div class="container">
+    <div class="col s12">
+      <h3 class="header">Shortened URL:<%= shortURL %></h3>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="https://picsum.photos/300/300?image=0">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <form action="/urls/<%= shortURL %>" method="POST">
+              <!--   edit full URL  -->
+              <label for="longURL">Update the long URL:</label>
+              <input id="longURL type="text" name="longURL" value="<%=longURL%>" placeholder="http://www." >
+            <!--    update the edited full URL button -->
+              <button class="btn waves-effect waves-light" type="submit" value="Update">Update</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
