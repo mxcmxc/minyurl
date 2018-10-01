@@ -5,10 +5,10 @@ Miny URL is a full stack web application built with Node and Express that allows
 ## Final Product
 
 !["Login page"](README-images/login.png)
-!["Registration page"](https://github.com/mxcmxc/TinyApp/blob/master/docs/register-page.png?raw=true)
-!["Create a URL"](https://github.com/mxcmxc/TinyApp/blob/master/docs/urls-page.png?raw=true)
-!["Edit a URL"](https://github.com/mxcmxc/TinyApp/blob/master/docs/urls-page.png?raw=true)
-!["List of URLs"](https://github.com/mxcmxc/TinyApp/blob/master/docs/urls-page.png?raw=true)
+!["Registration page"](README-images/register.png)
+!["Create a URL"](README-images/create-url-modal.png)
+!["Edit a URL"](README-images/edit-url.png)
+!["List of URLs"](README-images/url-database.png)
 
 ## Dependencies
 
